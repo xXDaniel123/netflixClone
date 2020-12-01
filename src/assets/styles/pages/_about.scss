@@ -1,0 +1,8 @@
+.about-container{
+    position: absolute;
+    top: 20%;
+
+    &>h4{
+        font-size: rem(24px);
+    }
+}

@@ -1,0 +1,23 @@
+
+// setup
+@import './setup/functions.scss';
+@import './setup/typography.scss';
+@import './setup/variables.scss';
+
+//base
+@import './base/base.scss';
+
+
+// cmps
+@import './cmps/navbar.scss';
+@import './cmps/jumbotron.scss';
+@import './cmps/movie-list.scss';
+@import './cmps/controls.scss';
+@import './cmps/details.scss';
+@import './cmps/categories.scss';
+@import './cmps/footer.scss';
+
+// pages
+@import './pages/login.scss';
+@import './pages/welcome.scss';
+@import './pages/about.scss';

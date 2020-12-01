@@ -1,0 +1,8 @@
+.categories{
+    margin-top: -14%;
+    // transform: translateY(-36%);
+
+    &>:last-child{
+        margin-bottom: rem(120px);
+    }
+}

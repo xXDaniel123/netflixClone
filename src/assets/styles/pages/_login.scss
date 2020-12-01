@@ -1,0 +1,110 @@
+.login-container{
+    position: relative;
+
+    &>:first-child{
+        &>img{
+            min-width: rem(140px);
+            position: absolute;
+            top: rem(20px);
+            left: rem(20px);
+        }
+    }
+}
+
+.background-container{
+    background-size: cover;
+    display: block;
+    height: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    top: 0;
+
+    &>.black-screen{
+        min-width: 100vw;
+        min-height: 100%;
+        background-color: #00000080;
+        position: fixed;
+        top: 0;
+    }
+
+    &>img{
+        width: auto;
+        min-width: 100%;
+        min-height: 100%;
+    }
+}
+
+.form-container{
+    border-radius: 0.35em;
+    width: rem(450px);
+    height: rem(660px);
+    text-align: center;
+    background-color: #000000aa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: rem(100px);
+    left: 50%;
+    transform: translateX(-50%);
+    transition: .5s;
+    // starts counting from backwards, therfore 1 will be the last el, and 2 will be the
+    // 2nd from the end
+
+    &>h1{
+        margin: rem(24px) 0;
+        justify-self: left;
+        align-self: flex-start;
+        margin-left: rem(66px);
+    }
+
+    &>:nth-last-child(2){
+        flex-grow: 1;
+    }
+}
+
+.inner-form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &>:last-child{
+        width: rem(185px);
+        height: rem(44px);
+        font-size: rem(14px);
+        color: #0000007c;
+        font-family: 'Roboto-Bold';
+        cursor: pointer;
+    }
+}
+
+.field{
+    background: #333;
+    width: rem(314px);
+    height: rem(50px);
+    border-radius: rem(4px);
+    outline: none;
+    color: #fff;
+    border: none;
+    margin-bottom: rem(16px);
+    padding-top: 4%;
+    padding: 0 rem(16px);
+}
+
+.toggle-signup-mode{
+    width: 100%;
+    margin-bottom: rem(28px);
+
+    &>div button {
+        cursor: pointer;
+        background: none;
+        color: white;
+        border: none;
+        text-decoration: underline;
+        font-size: rem(20px);
+        outline: none;
+    }
+}
