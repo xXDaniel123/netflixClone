@@ -38,7 +38,9 @@ export const WelcomePage = () => {
                     animate="animate"
                     initial="initial"
                     variants={variants}
-                    transition={{ duration: 0.4, ease: 'easeOut', delay: 0.15 }} src="https://www.freepnglogos.com/uploads/netflix-logo-0.png" alt="logo"/>
+                    transition={{ duration: 0.4, ease: 'easeOut', delay: 0.15 }} 
+                    style={{ minWidth: '10rem' }}
+                    src="https://www.freepnglogos.com/uploads/netflix-logo-0.png" alt="logo"/>
                 <motion.h2
                     animate="animate"
                     initial="initial"
@@ -51,8 +53,8 @@ export const WelcomePage = () => {
                     variants={variants}
                     transition={{ duration: 0.4, ease: 'easeOut', delay: 0.425 }}
                     className="directions-buttons-container">
-                    <Link to='browse'><div>Enter as Guest</div></Link>
-                    <Link to='login'><div>login & Signup</div></Link>
+                    <Link to='browse'><button>Enter as Guest</button></Link>
+                    <Link to='login'><button>login & Signup</button></Link>
                 </motion.div>
             </motion.div>
         </div>

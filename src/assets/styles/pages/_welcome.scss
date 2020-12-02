@@ -30,16 +30,17 @@
         border-radius: 0.25em;
         margin: 0 rem(8px);
         background-color: #2d2d2d7a;
-        cursor: pointer;
         transition: .15s;
         text-decoration: none;
 
-        &>div{
-            // height: rem(44px);
+        &>button{
+            border: none;
+            cursor: pointer;
             line-height: 2.5;
-            color: rgb(199, 199, 199);
+            background-color: rgb(199, 199, 199);
             transition: .15s;
             padding: 0 rem(50px);
+            outline: none;
             -webkit-box-shadow: 2px 1px 17px -1px rgba(17, 17, 17, 0.5);
             box-shadow: 2px 1px 17px -1px rgba(21, 21, 21, 0.5);
         }
