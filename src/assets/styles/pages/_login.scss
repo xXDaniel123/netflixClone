@@ -12,7 +12,9 @@
 }
 
 .background-container{
+    background-color: black;
     background-size: cover;
+    background-repeat: no-repeat;
     display: block;
     height: 100%;
     min-height: 100vh;
@@ -40,7 +42,7 @@
 .form-container{
     border-radius: 0.35em;
     width: rem(450px);
-    height: rem(660px);
+    min-height: rem(660px);
     text-align: center;
     background-color: #000000aa;
     display: flex;
@@ -54,13 +56,6 @@
     // starts counting from backwards, therfore 1 will be the last el, and 2 will be the
     // 2nd from the end
 
-    &>h1{
-        margin: rem(24px) 0;
-        justify-self: left;
-        align-self: flex-start;
-        margin-left: rem(66px);
-    }
-
     &>:nth-last-child(2){
         flex-grow: 1;
     }
@@ -70,6 +65,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: .5s;
+
+        // &>h1{
+        //     margin: rem(24px) 0;
+        //     justify-self: left;
+        //     align-self: flex-start;
+        //     margin-left: rem(66px);
+        // }
+
+    &>h1{
+        align-self: flex-start;
+        margin: rem(24px) 0;
+    }
 
     &>:last-child{
         width: rem(185px);
@@ -107,4 +115,17 @@
         font-size: rem(20px);
         outline: none;
     }
+}
+
+// media queries
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 500px) {
+
+    .form-container{
+        min-height: 36rem;
+        min-width: rem(365px);
+        width: 100vw;
+    }
+
 }

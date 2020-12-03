@@ -1,16 +1,18 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { connect, useDispatch } from 'react-redux'
-import { loadMovie } from '../store/actions/videoActions'
+import { loadMovie, resetMovie } from '../store/actions/videoActions'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MoviePreviewControls } from './MoviePreviewControls'
 import { Navbar } from './Navbar'
+import exit from '../assets/icons/exit.svg'
 
 export const _MovieDetails = (props) => {
 
     const { id } = useParams()
     const videoEl = useRef(null)
     const dispatch = useDispatch()
+    const history = useHistory()
 
     useEffect(() => {
         loadMovieDetails()
@@ -42,6 +44,12 @@ export const _MovieDetails = (props) => {
             )
         })
         return genres
+    }
+
+    const closeMovieModal = (ev) => {
+        ev.stopPropagation()
+        dispatch(resetMovie())
+        history.push('/browse')
     }
 
     const easing = [0.6, 0.05, 0.01, 1]
@@ -79,6 +87,7 @@ export const _MovieDetails = (props) => {
                     variants={variants}
                     className="details-inner-container" >
                     <motion.div className="details-video-container" onClick={() => togglePlayingVideo()}>
+                        <div className="details-exit-btn" onClick={ closeMovieModal }><img src={exit} alt="exit"/></div>
                         <motion.video autoPlay className="details-video" ref={videoEl} >
                             <source src={props.currentMovie.trailerURL} />
                         </motion.video>

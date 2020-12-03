@@ -1,8 +1,20 @@
 .about-container{
     position: absolute;
     top: 20%;
+    min-width: 22rem;
+    margin: 0 auto;
+    height: auto;
 
     &>h4{
         font-size: rem(24px);
+        line-height: 2rem;
     }
+}
+
+@media screen and (max-width: 500px){
+
+    .about-container {
+        padding: 1rem;
+    }
+
 }

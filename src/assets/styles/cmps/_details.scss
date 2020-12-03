@@ -48,3 +48,47 @@
 .details-text-container{
     padding: 0 rem(24px);
 }
+
+.details-exit-btn{
+    background-color: #00000095;
+    width: rem(34px);
+    height: rem(34px);
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    top: rem(10px);
+    right: rem(10px);
+    text-align: center;
+    cursor: pointer;
+
+    &>img{
+        width: 40%;
+        transform: translateY(40%); 
+        opacity: .9;
+    }
+}
+
+// media queries
+
+@media screen and (max-width: 1090px){
+
+    .details-inner-container{
+        max-width: 80vw;
+        left: calc(50% - 40vw)
+    }
+
+}
+
+@media screen and (max-width: 500px){
+
+    .details-inner-container{
+        max-width: 90vw;
+        left: calc(50% - 45vw)
+    }
+
+    .details-exit-btn{
+        top: rem(6px);
+        right: rem(6px);
+    }
+
+}

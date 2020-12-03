@@ -51,7 +51,7 @@ export const Avatar = (props) => {
             <div>
                 <div className="avatar-img-container">
                     <img src={props.loggedInUser.imgUrl} alt="" />
-                    </div>
+                </div>
             </div>
             {isModalShown && 
                 <motion.div

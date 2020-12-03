@@ -23,7 +23,9 @@
 .directions-buttons-container{
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     &>a{
         border: 1px solid #e5e5e57e;
@@ -32,6 +34,7 @@
         background-color: #2d2d2d7a;
         transition: .15s;
         text-decoration: none;
+        margin-bottom: rem(16px);
 
         &>button{
             border: none;

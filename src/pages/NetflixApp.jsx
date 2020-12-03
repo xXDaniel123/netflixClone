@@ -35,18 +35,21 @@ export function NetflixApp() {
     const variants = {
         animate: {
             opacity: 1,
+            y: 0
         },
         exit: {
             opacity: 0,
         },
         initial: {
             opacity: 0,
+            y: 30
         }
     }
 
     const pageTransition = {
-        duration: 1.25,
-        ease: 'easeOut'
+        duration: 0.45,
+        ease: 'easeOut',
+        delay: 0.25
 
     }
 
@@ -67,7 +70,7 @@ export function NetflixApp() {
                         exit="exit"
                         animate="animate"
                         initial="initial"
-                        transition={pageTransition}
+                        transition={{ duration: 0.5, delay: 0.25, ease: 'easeOut' }}
                     >
                         {categories.map((category, idx) => {
                             return (

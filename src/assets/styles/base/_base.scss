@@ -8,12 +8,13 @@ html {
     line-height: 1.6;
     background-color: $BGgrey;
     color: $textWhite;
-    overflow-x: hidden;
 }
 
 body {
     font-size: rem(16px);
     margin: 0;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
 }
 
 h1,
@@ -33,3 +34,7 @@ img {
 .disable-scroll {
     overflow-y: hidden;
 }
+
+// html::-webkit-scrollbar {
+//     display: none;
+// }

@@ -1,0 +1,125 @@
+// drawer (move to its own place)
+
+.nav-drawer {
+    padding-top: 7vh;
+    padding-left: 4vw;
+    z-index: 20;
+    height: 100vh;
+    min-width: 65vw;
+    max-width: rem(450px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #020202;
+    overflow-y: hidden;
+    box-shadow: 2px 1px 20px 5px rgba(0, 0, 0, 0.659);
+    transition: .2s;
+
+}
+
+.navbar-mobile {
+    cursor: pointer;
+    position: fixed;
+    min-height: 6vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 21;
+    transition: .1s;
+    visibility: hidden;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 10%, rgba(0, 0, 0, 0));
+
+    &>:first-child {
+        width: 12%;
+        padding-left: 4vw;
+        padding-right: 2vw;
+        margin-right: rem(6px);
+        opacity: 0.9;
+        height: 5.5vh;
+    }
+
+    &>:nth-child(2){
+        width: rem(70px);
+    }
+
+}
+
+.mobile-black-screen {
+    background-color: rgba(0, 0, 0, 0.466);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 19;
+    transition: .25s;
+}
+
+.drawer-links-container {
+    display: flex;
+    flex-direction: column;
+
+    &>a {
+        font-family: 'Roboto-Bold';
+        color: #8e8e8e;
+        text-decoration: none;
+        outline: none;
+        padding: rem(6px) 0;
+        padding-left: rem(18px);
+        margin-left: -4vw;
+    }
+
+    .active-link {
+        color: $textWhite;
+        border-left: 6px solid rgb(157, 11, 11);
+        padding-left: rem(12px);
+    }
+}
+
+.drwer-divider {
+    height: 1px;
+    width: 100%;
+    background-color: rgb(62, 62, 62);
+    transform: translateX(-4vw);
+    margin: rem(4px) 0;
+}
+
+.login-drawer-link {
+    display: flex;
+
+    img {
+        font-weight: bolder;
+        align-self: center;
+        width: 3%;
+        margin-left: rem(8px);
+        transform: translateY(12%);
+    }
+}
+
+.navbar-avatar-container {
+
+    color: #8e8e8e;
+
+    &>img {
+        width: rem(40px);
+        border-radius: 0.25em;
+    }
+
+    &>button {
+        color: #8e8e8e;
+        border: none;
+        background: none;
+        text-align: left;
+        width: 100%;
+        padding: rem(8px) 0;
+        font-size: rem(16px);
+        font-family: 'Roboto-Bold';
+        outline: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .navbar-mobile {
+        visibility: visible;
+    }
+
+}

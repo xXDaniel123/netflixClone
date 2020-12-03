@@ -156,10 +156,10 @@
 
 // Media queries
 
-@media screen and (min-width: 1500px) {
+@media screen and (max-width: 500px) {
 
     .navbar {
-        padding: 0 rem(60px);
+        visibility: hidden;
     }
 
 }

@@ -8,6 +8,7 @@ import { Navbar } from './cmps/Navbar';
 import { LoginPage } from './pages/LoginPage';
 import { useSelector } from 'react-redux';
 import { WelcomePage } from './pages/WelcomePage';
+import { Drawer } from './cmps/Drawer';
 import { AnimatePresence } from 'framer-motion';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
   return (
     <React.Fragment>
       {(location.pathname !== '/login' && location.pathname !== '/') && <Navbar />}
+      {(location.pathname !== '/login' && location.pathname !== '/') && <Drawer />}
       <AnimatePresence>
         <Switch>
           <Route path="/about" component={AboutPage } />

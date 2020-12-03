@@ -46,8 +46,8 @@
 }
 
 .mute-btn-container{
-  cursor: pointer;
-
+  cursor: pointer;    
+  -webkit-tap-highlight-color: transparent;
   position: absolute;
   right: 4vw;
   bottom: 47%;
@@ -77,4 +77,29 @@
     background-color: #ffffff25;
   }
 
+}
+
+@media screen and (max-width: 800px) {
+
+  .mute-btn-container{
+     width: rem(36px);
+     height: rem(36px);
+     bottom: 42%;
+  }
+
+  .resized-logo{
+    width: 32%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  .mute-btn-container{
+     width: rem(32px);
+     height: rem(32px);
+     bottom: 40%;
+  }
+    .resized-logo {
+      width: 35%;
+    }
 }

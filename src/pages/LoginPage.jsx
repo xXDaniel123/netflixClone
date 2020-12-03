@@ -5,7 +5,7 @@ import { onUserSignup, onUserLogin, onGoogleSignup } from '../store/actions/user
 import { useHistory, Link } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import { motion } from 'framer-motion';
-
+import logo from '../assets/icons/logo.svg'
 
 const clientId = '168447752977-topi06sp3n60pk37e8j5dg91lnjophvi.apps.googleusercontent.com'
 
@@ -102,7 +102,7 @@ export const LoginPage = () => {
 
     return (
         <div className="login-container">
-            <Link to='/'><img src="https://www.freepnglogos.com/uploads/netflix-logo-0.png" alt="logo" className="logo" /></Link>
+            <Link to='/'><img src={logo} alt="logo" className="logo" /></Link>
             <div className="background-container">
                 <div className="black-screen"></div>
                 <img src="https://res.cloudinary.com/da0i9wy5t/image/upload/v1605007211/hero_image_lnjtd8.jpg" alt="" />
@@ -117,7 +117,6 @@ export const LoginPage = () => {
                 <div className="form-container">
                 { toggleMode === 'signup' && 
                 <React.Fragment>
-                    <h1>Sign Up</h1>
                         <Formik
                             validate={values => {
                                 const errors = {};
@@ -126,6 +125,7 @@ export const LoginPage = () => {
                             }} onSubmit={ onSignup }>
                             {({ isSubmitting, }) => (
                                 <form className="inner-form-container" onSubmit={ onSignup }>
+                                    <h1>Sign Up</h1>
                                     <input className="field" type="text" name="firstName" onChange={handleChange} placeholder="First Name" autoComplete="off" />
                                     <input className="field" type="text" name="lastName" onChange={ handleChange } placeholder="Last Name" autoComplete="off" />
                                     <input className="field" type="email" name="email" onChange={ handleChange } placeholder="Email address" autoComplete="off" />
@@ -138,7 +138,6 @@ export const LoginPage = () => {
                 }
                 { toggleMode === 'login' && 
                     <React.Fragment>
-                    <h1>Log In</h1>
                         <Formik
                             validate={values => {
                                 const errors = {};
@@ -147,6 +146,7 @@ export const LoginPage = () => {
                             }} onSubmit={ onLogin }>
                             {({ isSubmitting, }) => (
                                 <form className="inner-form-container" onSubmit={ onLogin }>
+                                    <h1>Log In</h1>
                                     <input className="field" type="email" name="email" onChange={ handleChange } placeholder="Email address" autoComplete="off" />
                                     <input className="field" type="password" name="password" onChange={ handleChange } placeholder="Password" autoComplete="off" />
                                     <button type="submit" disabled={ isSubmitting }>Log in</button>
