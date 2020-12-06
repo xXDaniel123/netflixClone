@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadMovies } from '../store/actions/videoActions'
 import { MoviePreview } from './MoviePreview'
 import { motion, AnimateSharedLayout } from 'framer-motion'
-
+import styled from 'styled-components'
 
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,21 +14,19 @@ import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
-import { Checkbox } from '@material-ui/core'
 
 // install Swiper components
 SwiperCore.use([Navigation, Pagination]);
 
 export function MovieList(props) {
 
-    const { movies } = useSelector(state => state.videoReducer)
     const dispatch = useDispatch()
+    const { movies } = useSelector(state => state.videoReducer)
+    const [listClassNames, setListClassNames] = useState('movies-container')
 
     useEffect(() => {
         loadMovies()
     }, [])
-
-    const [listClassNames, setListClassNames] = useState('movies-container')
 
     async function loadMovies(){
         try{
@@ -46,6 +44,28 @@ export function MovieList(props) {
         speed: 650,
         navigation: true,
         loop:true,
+        breakpoints: {
+            1400: {
+                slidesPerView: 6,
+                slidesPerGroup: 6, 
+            },
+            1096: {
+                slidesPerView: 5,
+                slidesPerGroup: 5, 
+            },
+            800: {
+                slidesPerView: 4,
+                slidesPerGroup: 4, 
+            },
+            500: {
+                slidesPerView: 3,
+                slidesPerGroup: 3, 
+            },
+            1: {
+                slidesPerView: 2,
+                slidesPerGroup: 2, 
+            }
+        }
     }
 
     return (
@@ -56,7 +76,8 @@ export function MovieList(props) {
                 onHoverEnd={() => setListClassNames('movies-container') }
                 >
                 {movies.length &&
-                    <Swiper {...swiperConfig}
+                    <Swiper className={"swiper-container"}
+                        {...swiperConfig}
                         onSwiper={(swiper) => {
                             if (props.idx === 1) swiper.slideToLoop(7, 0, false)
                             if (props.idx === 2) swiper.slideToLoop(13, 0, false)
@@ -76,7 +97,7 @@ export function MovieList(props) {
                                 </SwiperSlide>
                             )
                         })}  
-                    </Swiper>
+                </Swiper>
                 }
             </motion.div>      
         </section>

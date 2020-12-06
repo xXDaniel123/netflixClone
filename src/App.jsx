@@ -14,12 +14,7 @@ import { AnimatePresence } from 'framer-motion';
 function App() {
 
   const location = useLocation()
-  const currentMovie = useSelector(state => state.videoReducer.currentMovie)
-
-  useEffect(() => {
-    currentMovie ? document.querySelector('html').classList.add('disable-scroll') : document.querySelector('html').classList.remove('disable-scroll') 
-  }, [currentMovie])
-
+  
   return (
     <React.Fragment>
       {(location.pathname !== '/login' && location.pathname !== '/') && <Navbar />}
@@ -32,7 +27,6 @@ function App() {
           <Route path="/" component={ WelcomePage } />
         </Switch>
       </AnimatePresence>
-        <Route path="/browse/:id" component={ MovieDetails } />
     </React.Fragment>
   )
 }

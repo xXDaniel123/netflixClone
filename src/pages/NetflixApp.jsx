@@ -7,12 +7,17 @@ import { MovieList } from '../cmps/MovieList'
 import { Route, useHistory } from 'react-router-dom'
 import { Footer } from '../cmps/Footer'
 import { motion } from 'framer-motion'
+import { MovieDetails } from '../cmps/MovieDetails'
 
 export function NetflixApp() {
 
     const { categories, currentMovie } = useSelector(state => state.videoReducer)
     const dispatch = useDispatch()
     const history = useHistory()
+
+    // useEffect(() => {
+    //     currentMovie ? document.querySelector('body').classList.add('disable-scroll') : document.querySelector('body').classList.remove('disable-scroll')
+    // }, [currentMovie])
 
     useEffect(() => {
         loadCategories()
@@ -54,19 +59,20 @@ export function NetflixApp() {
     }
 
     return (
-        <motion.div className="app-container"
+        <motion.div 
+            className="app-container"
             exit="exit"
             animate="animate"
             initial="initial"
             variants={variants}
             transition={pageTransition}
-            
         >
             {categories.length 
                 ? <React.Fragment>
                     {currentMovie && <div className="screen" onClick={ () => closeMovieModal() }></div>}
                     <Jumbotron />
-                    <motion.section className="categories"
+                    <motion.section 
+                        className="categories"
                         exit="exit"
                         animate="animate"
                         initial="initial"
@@ -82,6 +88,7 @@ export function NetflixApp() {
                 </React.Fragment>
                 : <h4>loading...</h4> 
             }
+            <Route path="/browse/:id" component={ MovieDetails } />
         </motion.div>
     )
 }

@@ -14,11 +14,6 @@ export const AboutPage = () => {
         }
     }
 
-    const pageTransition={
-        duration: 0.35,
-        ease: 'easeOut'
-    }
-
     return (
         <motion.div
             animate="animate"
