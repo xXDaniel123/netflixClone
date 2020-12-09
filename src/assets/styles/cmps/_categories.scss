@@ -1,18 +1,20 @@
 .categories{
     margin-top: -14%;
     transition: .2s;
-    overflow-x: hidden;
+    // overflow-x: hidden; this is the problem!
     // transform: translateY(-36%);
     &>:last-child{
         margin-bottom: rem(120px);
     }
 }
 
-@media screen and (max-width: 800px) {
-    .categories {
-        &>:last-child {
-            margin-bottom: rem(80px);
-        }
-    }
-}
+@media screen and (max-width: 500px) {
 
+.categories {
+
+    &>:last-child {
+        margin-bottom: rem(90px);
+    }
+
+}
+}

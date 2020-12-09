@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion'
-// import { useSelector } from 'react-redux'
 import { useHistory, Route } from 'react-router-dom'
-
 import { MoviePreviewControls } from './MoviePreviewControls'
 import { useSelector, useDispatch } from 'react-redux'
 import { MovieDetails } from './MovieDetails'
+import { updateUser } from '../store/actions/userActions'
 
 let currTimeOut;
 
@@ -13,6 +12,7 @@ export function MoviePreview(props) {
 
     const [currentTrailer, setCurrentTrailer] = useState(null)
     const [imgClass, setImgClass] = useState('')
+    const loggedInUser = useSelector(state => state.userReducer.loggedInUser)
     const isJumboTronCanPlay = useSelector(state => state.videoReducer.isJumboTronCanPlay)
 
     const dispatch = useDispatch()
@@ -49,6 +49,37 @@ export function MoviePreview(props) {
         ev.stopPropagation()
         onHoverPreviewEnd()
         history.push(`/browse/${props.id}`)
+    }
+
+    const onLikeMovie = (ev, id) => {
+        ev.stopPropagation()
+
+        if (!loggedInUser){
+            // show error message (please login to create preferences)
+            console.log('no user')
+        } else {
+            if (loggedInUser.moviePref.likedMovies.length) {
+                console.log('there are pref')
+                // search likedMovies for the same _id for the liked movie
+                // if it doesnt exist, send an action to update the user
+                loggedInUser.moviePref.likedMovies.push(id)
+            } else {
+                console.log('no prefs')
+                const userToSave = loggedInUser
+                userToSave.moviePref.likedMovies.push(id)
+                dispatch(updateUser(userToSave))
+
+                // add the movieid to the likedMovie array
+                // send the modified user to action called update user ??
+            }
+        }
+        // if there's no user, 
+        // send action dispatch to add to like movies in userPref
+    }
+
+    const onDislikeMovie = (ev, id) => {
+        ev.stopPropagation()
+        console.log('disliked', id)
     }
 
     const easing = [0.6, 0.05, 0.01, 1]
@@ -141,7 +172,13 @@ export function MoviePreview(props) {
                                     animate="animateControls"
                                     exit="exitControls"
                                     variants={controlsVariants}>
-                                    <MoviePreviewControls genre={props.genre} name={props.name} />
+                                    <MoviePreviewControls 
+                                        genre={props.genre} 
+                                        name={props.name} 
+                                        id={props.id} 
+                                        onLikeMovie={onLikeMovie} 
+                                        onDislikeMovie={onDislikeMovie} 
+                                    />
                                 </motion.div>
                             </motion.div>
                         }

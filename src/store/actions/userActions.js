@@ -39,7 +39,7 @@ export function onUserLogin(userCredentials){
 export function onGoogleSignup(token){
     return async dispatch => {
         try{
-            // code here to send to service the token 
+            // code here to send to service the token
             // that will send the token to server
             // server will authenticate the details
             // await userService.googleSignup(token)
@@ -47,6 +47,22 @@ export function onGoogleSignup(token){
             dispatch({ type: 'SET_USER', loggedInUser: user })
         } catch (err) {
             console.log('error on google signup', err)
+            throw err
+        }
+    }
+}
+
+export function updateUser(user){
+    return async dispatch => {
+        try {
+
+            // first send dispatch to set the user so it'll show in the front
+            // then send the put request to update the user
+            
+            dispatch({ type: 'SET_USER', loggedInUser: user })
+
+        } catch (err) {
+            console.log('error saving user', err)
             throw err
         }
     }

@@ -75,29 +75,30 @@ export function MovieList(props) {
                 onHoverStart={() => setListClassNames('movies-container hovering') }
                 onHoverEnd={() => setListClassNames('movies-container') }
                 >
-                {movies.length &&
-                    <Swiper className={"swiper-container"}
-                        {...swiperConfig}
-                        onSwiper={(swiper) => {
-                            if (props.idx === 1) swiper.slideToLoop(7, 0, false)
-                            if (props.idx === 2) swiper.slideToLoop(13, 0, false)
-                        }}
-                    >
-                        {movies.map((movie, idx) => {
-                            return (
-                                <SwiperSlide key={movie._id}>
-                                    <MoviePreview
-                                        key={movie._id}
-                                        id={movie._id}
-                                        name={movie.name}
-                                        imgURL={movie.imgURL}
-                                        genre={movie.genre}  
-                                        trailerURL={movie.trailerURL}
-                                    />
-                                </SwiperSlide>
-                            )
-                        })}  
-                </Swiper>
+                {movies.length
+                    ?   <Swiper className={"swiper-container"}
+                            {...swiperConfig}
+                            onSwiper={(swiper) => {
+                                if (props.idx === 1) swiper.slideToLoop(7, 0, false)
+                                if (props.idx === 2) swiper.slideToLoop(13, 0, false)
+                            }}
+                            >
+                            {movies.map((movie, idx) => {
+                                return (
+                                    <SwiperSlide key={movie._id}>
+                                        <MoviePreview
+                                            key={movie._id}
+                                            id={movie._id}
+                                            name={movie.name}
+                                            imgURL={movie.imgURL}
+                                            genre={movie.genre}  
+                                            trailerURL={movie.trailerURL}
+                                        />
+                                    </SwiperSlide>
+                                )
+                            })}  
+                            </Swiper>
+                    : <div style={{ position: 'relative', left: '50%' }}><div className="nfLoader"></div></div>
                 }
             </motion.div>      
         </section>

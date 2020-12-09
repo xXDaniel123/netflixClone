@@ -85,7 +85,8 @@ export const _MovieDetails = (props) => {
                     initial="initial"
                     exit="exit"
                     variants={variants}
-                    className="details-inner-container" >
+                    className="details-inner-container"
+                    >
                     <motion.div className="details-video-container" onClick={() => togglePlayingVideo()}>
                         <div className="details-exit-btn" onClick={ closeMovieModal }><img src={exit} alt="exit"/></div>
                         <motion.video autoPlay className="details-video" ref={videoEl} >

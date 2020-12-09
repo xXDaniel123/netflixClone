@@ -17,7 +17,13 @@ export const MoviePreviewControls = (props) => {
     return (
         <div className="controls-container">
             <div><h6>{props.name}</h6></div>
-            <div className="inner-controls-container"><Controls /></div>
+            <div className="inner-controls-container">
+                <Controls 
+                    id={props.id}
+                    onLikeMovie={props.onLikeMovie}
+                    onDislikeMovie={props.onDislikeMovie}
+                />
+            </div>
             <div className="genres-container">{ getGenres() }</div>
         </div>
     )

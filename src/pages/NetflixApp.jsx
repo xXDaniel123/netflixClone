@@ -11,17 +11,17 @@ import { MovieDetails } from '../cmps/MovieDetails'
 
 export function NetflixApp() {
 
-    const { categories, currentMovie } = useSelector(state => state.videoReducer)
+    const { categories, currentMovie, movies } = useSelector(state => state.videoReducer)
     const dispatch = useDispatch()
     const history = useHistory()
-
-    // useEffect(() => {
-    //     currentMovie ? document.querySelector('body').classList.add('disable-scroll') : document.querySelector('body').classList.remove('disable-scroll')
-    // }, [currentMovie])
 
     useEffect(() => {
         loadCategories()
     }, [])
+
+    useEffect(() => {
+        currentMovie ? document.querySelector('body').classList.add('disable-scroll') : document.querySelector('body').classList.remove('disable-scroll')
+    }, [currentMovie])
 
     async function loadCategories(){
         try{
@@ -55,7 +55,6 @@ export function NetflixApp() {
         duration: 0.45,
         ease: 'easeOut',
         delay: 0.25
-
     }
 
     return (
@@ -67,7 +66,7 @@ export function NetflixApp() {
             variants={variants}
             transition={pageTransition}
         >
-            {categories.length 
+            {categories.length
                 ? <React.Fragment>
                     {currentMovie && <div className="screen" onClick={ () => closeMovieModal() }></div>}
                     <Jumbotron />
@@ -86,7 +85,7 @@ export function NetflixApp() {
                     </motion.section>
                     <Footer />
                 </React.Fragment>
-                : <h4>loading...</h4> 
+                : <div className="nfLoader"></div>
             }
             <Route path="/browse/:id" component={ MovieDetails } />
         </motion.div>

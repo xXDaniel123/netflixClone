@@ -32,11 +32,17 @@ export const LoginPage = () => {
 
     const onSignup = async (ev) => {
         ev.preventDefault()
+
         const newUser = {
             email: userDetails.email.trim(),
             fullName: userDetails.firstName.trim() + ' ' + userDetails.lastName.trim(),
-            password: userDetails.password
+            password: userDetails.password,
+            moviePref: {
+                likedMovies: [],
+                dislikedMovies: [],
+            }
         }
+
         if (!newUser.email || !userDetails.firstName.trim() || !userDetails.lastName.trim() || !newUser.password) {
             setIsErrorShown(true)
             return
@@ -81,7 +87,7 @@ export const LoginPage = () => {
         }
     }
 
-    const onFailure = (res) => {
+    const onFailure = () => {
         setIsErrorShown(true)
     }
 
@@ -163,7 +169,7 @@ export const LoginPage = () => {
                             onSuccess={onSuccess}
                             onFailure={onFailure}
                             cookiePolicy={'single_host_origin'}
-                            isSignedIn={false} // check this after to true to keep logged in?
+                            isSignedIn={false} 
                         />
                     </div>
                     { isErrorShown && <div className="error-container">
